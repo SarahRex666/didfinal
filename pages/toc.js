@@ -2,6 +2,8 @@ import React, { Fragment } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Header from "../components/Header";
+import { Disclosure } from '@headlessui/react';
+import { ChevronDownIcon } from '@heroicons/react/outline';
 
 const volumes = [
   {
@@ -63,20 +65,6 @@ const volumes = [
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-
-// 👇 so this 'readline' thing works in reg node.js, idk if/how for next.js yet
-// its a way to make command line interactive and able to take input from the user
-// const inputFunction = () => {
-//   const readline = require('readline').createInterface({
-//     input: process.stdin,
-//     output: process.stdout
-//   });
-
-//   readline.question('Who are you?', name => {
-//     console.log(`Hey there ${name}!`);
-//     readline.close();
-//   });
-// }
 
 export default function NewToc() {
   return (
@@ -149,43 +137,63 @@ export default function NewToc() {
           <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
               <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-                <table className="min-w-full">
-                  <tbody className="bg-white">
-                    {/* <tbody className="bg-white/70 backdrop-blur-lg"> */}
-                    {volumes.map((volume) => (
-                      <Fragment key={volume.name}>
-                        <tr className="border-t border-gray-200">
-                          <th
-                            colSpan={1}
-                            scope="colgroup"
-                            className="bg-gray-50 px-4 py-2 text-center text-lg font-semibold text-gray-900 hover:text-gray-500 sm:px-6 font-garamond"
-                          >
-                            <Link href={volume.url}>
-                              <a>{volume.name}</a>
-                            </Link>
-                          </th>
-                        </tr>
-                        {volume.chapter.map((volume, chapIdx) => (
-                          <tr
-                            key={volume.title}
-                            className={classNames(
-                              chapIdx === 0
-                                ? "border-gray-300"
-                                : "border-gray-200",
-                              "border-t"
-                            )}
-                          >
-                            <td className="whitespace-nowrap py-4 pl-10 pr-3 text-lg font-medium text-gray-900 hover:text-gray-500 sm:pl-6 font-garamond">
-                              <Link href={volume.url}>
-                                <a>{volume.title}</a>
-                              </Link>
-                            </td>
+                  <table className="min-w-full">
+                    <tbody className="bg-white">
+                      {/* <tbody className="bg-white/70 backdrop-blur-lg"> */}
+                      {volumes.map((volume) => (
+                        <Fragment key={volume.name}>
+                          <tr className="border-t border-gray-200">
+                            <th
+                              colSpan={1}
+                              scope="colgroup"
+                              className="bg-gray-50 px-4 py-2 text-center text-lg font-semibold text-gray-900 hover:text-gray-500 sm:px-6 font-garamond"
+                            >
+                              <Disclosure as="div" className="pt-6">
+                                {({ open }) => (
+                                  <>
+                                    <dt className="text-lg">
+                                      <Disclosure.Button className="text-left w-full flex justify-between items-start">
+                                        <Link href={volume.url}>
+                                          <a>{volume.name}</a>
+                                        </Link>
+                                        <span className="ml-6 h-7 flex items-center">
+                                          <ChevronDownIcon
+                                            className={classNames(open ? 'transition duration-300 ease-in-out transform -rotate-180' : 'rotate-0', 'transition duration-300 ease-in-out h-6 w-6 transform')}
+                                            aria-hidden="true"
+                                          />
+                                        </span>
+                                      </Disclosure.Button>
+                                    </dt>
+                                    <Disclosure.Panel as="dd" className="mt-2">
+                                      {volume.chapter.map((volume, chapIdx) => (
+                                        <tr
+                                          key={volume.title}
+                                          className={classNames(
+                                          chapIdx === 0
+                                          ? "border-gray-300"
+                                          : "border-gray-200",
+                                          "border-t"
+                                          )}
+                                        >
+                                          <div className="flex justify-center">
+                                            <td className="whitespace-nowrap py-4 pl-10 pr-3 text-lg font-medium text-gray-900 hover:text-gray-500 sm:pl-6 font-garamond">
+                                              <Link href={volume.url}>
+                                                <a>{volume.title}</a>
+                                              </Link>
+                                            </td>
+                                          </div>
+                                        </tr>
+                                      ))}
+                                    </Disclosure.Panel>
+                                  </>
+                                )}
+                              </Disclosure>
+                            </th>
                           </tr>
-                        ))}
-                      </Fragment>
-                    ))}
-                  </tbody>
-                </table>
+                        </Fragment>
+                      ))}
+                    </tbody>
+                  </table>
               </div>
             </div>
           </div>
