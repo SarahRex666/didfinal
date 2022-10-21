@@ -176,7 +176,7 @@ export default function PoemPage(props) {
                   <br></br>
                 </div>
               );
-            } else return <p className="font-serif">{line}</p>;
+            } else return <p className="font-garamond">{line}</p>;
           })}
         </div>
       </div>

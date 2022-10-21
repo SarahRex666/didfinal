@@ -73,7 +73,7 @@ export default function PoemPage(props) {
           {poems[props.params.id - 1].lines.map((line) => {
             if (line === "1") {
               return <br></br>;
-            } else return <p class="font-serif">{line}</p>;
+            } else return <p class="font-garamond">{line}</p>;
           })}
         </div>
       </div>
@@ -117,7 +117,7 @@ export default function PoemPage(props) {
           {poems[props.params.id - 1].lines.map((line) => {
             if (line === "1") {
               return <br></br>;
-            } else return <p class="font-serif">{line}</p>;
+            } else return <p class="font-garamond">{line}</p>;
           })}
         </div>
       </div>
@@ -162,7 +162,7 @@ export default function PoemPage(props) {
           {poems[props.params.id - 1].lines.map((line) => {
             if (line === "1") {
               return <br></br>;
-            } else return <p class="font-serif">{line}</p>;
+            } else return <p className="font-garamond">{line}</p>;
           })}
         </div>
       </div>

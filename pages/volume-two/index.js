@@ -65,7 +65,9 @@ export default function VolumeTwo() {
         </div>
       </div>
 
-      <div className="my-5 mx-5 text-3xl text-center">Volume 2</div>
+      <div className="my-5 mx-5 text-3xl text-center font-garamond">
+        Volume 2
+      </div>
 
       {/* 👇 testing data */}
       {/* <div className="text-center">
