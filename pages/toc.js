@@ -146,7 +146,7 @@ export default function NewToc() {
                             <th
                               colSpan={1}
                               scope="colgroup"
-                              className="bg-gray-50 px-4 py-2 text-center text-lg font-semibold text-gray-900 hover:text-gray-500 sm:px-6 font-garamond"
+                              className="bg-white px-4 py-2 text-center text-lg font-semibold text-gray-900 hover:text-gray-500 sm:px-6 font-garamond"
                             >
                               <Disclosure as="div" className="pt-6">
                                 {({ open }) => (
@@ -172,11 +172,11 @@ export default function NewToc() {
                                           chapIdx === 0
                                           ? "border-gray-300"
                                           : "border-gray-200",
-                                          "border-t"
+                                          // "border-t"
                                           )}
                                         >
-                                          <div className="flex justify-center">
-                                            <td className="whitespace-nowrap py-4 pl-10 pr-3 text-lg font-medium text-gray-900 hover:text-gray-500 sm:pl-6 font-garamond">
+                                          <div className="">
+                                            <td className="whitespace-nowrap py-4 text-lg font-medium text-gray-900 hover:text-gray-500 sm:pl-6 font-garamond">
                                               <Link href={volume.url}>
                                                 <a>{volume.title}</a>
                                               </Link>
