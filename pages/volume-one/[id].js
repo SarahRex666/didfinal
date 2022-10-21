@@ -78,7 +78,7 @@ export default function PoemPage(props) {
                 </div>
               );
               // 👆 Missing "key" prop for element in iterator
-            } else return <p className="font-garamond text-lg">{line}</p>;
+            } else return <p className="font-garamond">{line}</p>;
           })}
         </div>
       </div>
@@ -128,7 +128,7 @@ export default function PoemPage(props) {
                   <br></br>
                 </div>
               );
-            } else return <p className="text-lg font-garamond">{line}</p>;
+            } else return <p className="font-garamond">{line}</p>;
           })}
         </div>
       </div>
